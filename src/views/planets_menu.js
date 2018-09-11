@@ -5,11 +5,13 @@ const PlanetMenu = function() {
 };
 
 PlanetMenu.prototype.bindEvents = function() {
-  const planetsNav = document.querySelector('.planets-menu ol');
-  planetsNav.addEventListener('click', (event) => {
-    const selectedPlanet = event.target.id;
-    PubSub.publish('PlanetsMenu:planet-selected', selectedPlanet);
-  });
+  const planetsNavLis = document.querySelectorAll('.planets-menu ol li');
+  for (let planetsNavLi of planetsNavLis) {
+    planetsNavLi.addEventListener('click', (event) => {
+      const selectedPlanet = event.target.id;
+      PubSub.publish('PlanetsMenu:planet-selected', selectedPlanet);
+    });
+  }
 }
 
 module.exports = PlanetMenu;
