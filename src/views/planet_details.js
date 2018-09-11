@@ -22,13 +22,11 @@ PlanetDetails.prototype.display = function(planet) {
 
 PlanetDetails.prototype.generateLisForPlanetDetails = function(planet) {
 
-  const planetValues = Object.values(planet);
-  const planetKeys = Object.keys(planet);
   const planetInfoSection = document.querySelector('.planet-details');
-
+  planetInfoSection.textContent = "";
   const planetDetailUl = document.createElement('ul');
   planetInfoSection.appendChild(planetDetailUl);
-  planetDetailUl.textContent = "";
+
 
   const planetNameLi = document.createElement("li");
   planetNameLi.textContent = `Name: ${planet.name}`
@@ -57,6 +55,12 @@ PlanetDetails.prototype.generateLisForPlanetDetails = function(planet) {
   const moonsLi = document.createElement('li');
   moonsLi.textContent = `Moons: ${planet.moons}`;
   planetDetailUl.appendChild(moonsLi);
+
+  const image = document.createElement('div');
+  image.setAttribute('src', `${planet.image}`);
+  image.setAttribute('id', 'planet-image');
+  image.setAttribute('style', `background-image: url(${planet.image})`)
+  planetInfoSection.appendChild(image);
 
   // for(i = 0; i < planetValues.length - 1; i++) {
   //   const liElement = document.createElement('li');
